@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import './App.css';
+import {TestCounter} from "./components/TestCounter";
 
 function App() {
     const [count, setCount] = useState(0);
@@ -11,6 +12,7 @@ function App() {
     }
     return (
         <div className="App">
+            <TestCounter/>
             <div>
                 {count}
             </div>
