@@ -1,0 +1,26 @@
+.input {
+    width: 150px;
+    height: 20px;
+    border: 2px solid #11afdb;
+    border-radius: 5px;
+}
+
+.input:focus {
+    outline: none;
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: space-between;
+    /*border: 2px solid #11afdb;*/
+    /*padding: 5px;*/
+    /*border-radius: 5px;*/
+}
+
+.span {
+    color: #11afdb;
+    font-size: 20px;
+    font-weight: 900;
+}

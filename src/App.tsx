@@ -3,6 +3,7 @@ import './App.css';
 import {TestCounter} from "./components/TestCounter";
 import {Button} from "./components/Button/Button";
 import classes from "./components/Button/Button.module.css";
+import {InputValue} from "./components/InputValue/InputValue";
 
 function App() {
     const [count, setCount] = useState(0);
@@ -19,16 +20,19 @@ function App() {
     return (
         <div className="App">
             <div className={'container-wrapper'}>
-                <div className={'number'}>4</div>
+                <div className={'input-wrapper'}>
+                    <InputValue description={'max value: '}/>
+                    <InputValue description={'start value: '}/>
+                </div>
                 <div className={'button-wrapper'}>
-                    <Button name={'Set'} handler={onClickHandler} disabled={false}></Button>
+                    <Button name={'set'} handler={onClickHandler} disabled={false}></Button>
                 </div>
             </div>
             <div className={'container-wrapper'}>
                 <div className={'number'}>{count}</div>
                 <div className={'button-wrapper'}>
-                    <Button name={'Inc'} handler={incHandler} disabled={count === 5}></Button>
-                    <Button name={'Reset'} handler={resetHandler} disabled={false}></Button>
+                    <Button name={'inc'} handler={incHandler} disabled={count === 5}></Button>
+                    <Button name={'reset'} handler={resetHandler} disabled={false}></Button>
                     {/*<button disabled={false} className={classes.button}>test</button>*/}
                 </div>
             </div>
