@@ -3,11 +3,12 @@ import styles from "./Button.module.css"
 
 type ButtonPropsType = {
     name: string
-    handler: (name: string) => void
+    disabled: boolean
+    handler: () => void
 }
 
-export const Button: React.FC<ButtonPropsType> = ({name, handler}) => {
+export const Button: React.FC<ButtonPropsType> = ({name, handler, disabled}) => {
     return (
-        <button onClick={() => handler(name)} className={styles.button}>{name} </button>
+        <button onClick={handler} className={styles.button} disabled={disabled}>{name}</button>
     )
 }
