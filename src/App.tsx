@@ -7,6 +7,24 @@ import {InputValue} from "./components/InputValue/InputValue";
 
 function App() {
     const [count, setCount] = useState(0);
+    const [maxValue, setMaxValue] = useState('0');
+    const [startValue, setStartValue] = useState('0');
+
+    const onChangeValue = (value: string) => {
+        //  setMaxValue(value);
+        console.log(value + '  test')
+    }
+
+    const onChangeMaxValue = (value: string) => {
+        setMaxValue(value);
+        console.log(maxValue + ' Max');
+    }
+
+    const onChangeStartValue = (value: string) => {
+        setStartValue(value);
+        console.log(startValue + ' Start');
+    }
+
     const incHandler = () => {
         setCount(count + 1);
     }
@@ -21,8 +39,8 @@ function App() {
         <div className="App">
             <div className={'container-wrapper'}>
                 <div className={'input-wrapper'}>
-                    <InputValue description={'max value: '}/>
-                    <InputValue description={'start value: '}/>
+                    <InputValue description={'max value: '} currentValue={maxValue} onChangeValue={onChangeMaxValue}/>
+                    <InputValue description={'start value: '} currentValue={startValue} onChangeValue={onChangeStartValue}/>
                 </div>
                 <div className={'button-wrapper'}>
                     <Button name={'set'} handler={onClickHandler} disabled={false}></Button>
