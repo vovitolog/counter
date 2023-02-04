@@ -9,12 +9,12 @@ type InputPropsType = {
 
 export const InputValue: React.FC<InputPropsType> = ({description, currentValue, onChangeValue}) => {
 
-    const [value, setValue] = useState(currentValue);
+   // const [value, setValue] = useState(currentValue);
 
     const onChangeInputHandler = (event: ChangeEvent<HTMLInputElement>) => {
         // console.log(event.currentTarget.value)
         // console.log(typeof(event.currentTarget.value))
-        setValue(event.currentTarget.value);
+      //  setValue(event.currentTarget.value);
         onChangeValue(event.currentTarget.value)
     }
 
