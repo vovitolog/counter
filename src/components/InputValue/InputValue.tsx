@@ -21,7 +21,9 @@ export const InputValue: React.FC<InputPropsType> = ({description, currentValue,
     return (
         <div className={styles.container}>
             <span className={styles.span}>{description}</span>
-            <input type={"number"} className={styles.input} onChange={onChangeInputHandler} value={currentValue}/>
+            <input type={"number"} className={styles.input } onChange={onChangeInputHandler} value={currentValue}/>
         </div>
     )
 }
+
+//+ ' ' + styles.error

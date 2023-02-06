@@ -3,6 +3,13 @@
     height: 20px;
     border: 2px solid #11afdb;
     border-radius: 5px;
+    background-color: #fff;
+    text-align: center;
+}
+
+.error {
+    background-color: #F09BAE;
+    border: 2px solid #F14741;
 }
 
 .input:focus {
