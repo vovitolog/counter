@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import './App.css';
 import {TestCounter} from "./components/TestCounter";
 import {Button} from "./components/Button/Button";
@@ -14,6 +14,7 @@ function App() {
     const [startValue, setStartValue] = useState(localStorage.getItem('startValue') || '0');
     const [count, setCount] = useState(Number(startValue));
     const [isSetButtonDisabled, setIsSetButtonDisabled] = useState<boolean>(true);
+    const [isMaximumCounterValueReached, setIsMaximumCounterValueReached] = useState<boolean>(false);
 
     const onChangeValue = (value: string) => {
         //  setMaxValue(value);
@@ -22,17 +23,18 @@ function App() {
     const onChangeMaxValue = (value: string) => {
         setIsSetButtonDisabled(false);
         setMaxValue(value);
-        console.log(value + '  test')
-        console.log(maxValue + ' Max');
+        // console.log(value + '  test')
+        // console.log(maxValue + ' Max');
     }
 
     const onChangeStartValue = (value: string) => {
         setIsSetButtonDisabled(false);
         setStartValue(value);
-        console.log(startValue + ' Start');
+        // console.log(startValue + ' Start');
     }
 
     const incHandler = () => {
+       // checkMaximumValueReached();
         setCount(count + 1);
     }
     const resetHandler = () => {
@@ -40,14 +42,27 @@ function App() {
     }
 
     const setHandler = () => {
-        console.log('set')
+        // console.log('set')
         setCount(Number(startValue));
         localStorage.setItem('startValue', startValue);
         localStorage.setItem('maxValue', maxValue);
         setIsSetButtonDisabled(true);
     }
 
-    console.log(isSetButtonDisabled)
+    // const checkMaximumValueReached = () => {
+    //     if (count === Number(maxValue)) {
+    //         setIsMaximumCounterValueReached(true);
+    //         console.log('ttttttttttttt')
+    //     }
+    // }
+
+    useEffect(()=>{
+        if (count === Number(maxValue)) {
+            setIsMaximumCounterValueReached(true);
+            console.log('ttttttttttttt')
+        } else  setIsMaximumCounterValueReached(false);
+    }, [count])
+
     return (
         <div className="App">
             <div className={'container-wrapper'}>
@@ -62,7 +77,7 @@ function App() {
             </div>
             <div className={'container-wrapper'}>
                 {/*<div className={'number'}>{count}</div>*/}
-                <CounterValue value={count.toString(10)}/>
+                <CounterValue value={count.toString(10)} maximumReached={isMaximumCounterValueReached}/>
                 <div className={'button-wrapper'}>
                     <Button name={'inc'} handler={incHandler} disabled={count === Number(maxValue)}></Button>
                     <Button name={'reset'} handler={resetHandler} disabled={false}></Button>
