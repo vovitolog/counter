@@ -4,6 +4,7 @@ import {TestCounter} from "./components/TestCounter";
 import {Button} from "./components/Button/Button";
 import classes from "./components/Button/Button.module.css";
 import {InputValue} from "./components/InputValue/InputValue";
+ import {CounterValue} from "./components/CounterValue/CounterValue";
 
 function App() {
     const ERROR_MESSAGE = 'Incorrect value!';
@@ -60,7 +61,8 @@ function App() {
                 </div>
             </div>
             <div className={'container-wrapper'}>
-                <div className={'number'}>{count}</div>
+                {/*<div className={'number'}>{count}</div>*/}
+                <CounterValue value={count.toString(10)}/>
                 <div className={'button-wrapper'}>
                     <Button name={'inc'} handler={incHandler} disabled={count === Number(maxValue)}></Button>
                     <Button name={'reset'} handler={resetHandler} disabled={false}></Button>

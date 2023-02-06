@@ -1,0 +1,10 @@
+.number {
+    color: #11afdb;
+    border-radius: 10px;
+    background-color: #22252D;
+    border: 2px solid #11afdb;
+    font-size: 50px;
+    font-weight: 900;
+    text-align: center;
+    padding: 20px 0px;
+}

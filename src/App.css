@@ -39,17 +39,6 @@
     padding: 13px 10px;
 }
 
-.number {
-    color: #11afdb;
-    border-radius: 10px;
-    background-color: #22252D;
-    border: 2px solid #11afdb;
-    font-size: 50px;
-    font-weight: 900;
-    text-align: center;
-    padding: 20px 0px;
-}
-
 .container-wrapper {
     width: 300px;
     height: 180px;
