@@ -4,13 +4,11 @@ import styles from './CounterValue.module.css'
 type CounterValueTypeProps = {
     value: string
     maximumReached: boolean
-    type?: 'digit' | 'string'
-    message?: string
 }
 
 export const CounterValue: React.FC<CounterValueTypeProps> = ({value, maximumReached}) => {
 
-    const counterValueClass = maximumReached? styles.number + ' ' + styles.maximum: styles.number;
+    const counterValueClass = maximumReached ? styles.number + ' ' + styles.maximum : styles.number;
 
     return (
         <div className={counterValueClass}>
