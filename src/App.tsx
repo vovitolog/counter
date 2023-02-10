@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
-import {TestCounter} from "./components/TestCounter";
 import {Button} from "./components/Button/Button";
-import classes from "./components/Button/Button.module.css";
 import {InputValue} from "./components/InputValue/InputValue";
 import {CounterValue} from "./components/CounterValue/CounterValue";
+import {Simulate} from "react-dom/test-utils";
+import error = Simulate.error;
 
 function App(this: any) {
     const ERROR_MESSAGE = 'Incorrect value!';
@@ -23,34 +23,34 @@ function App(this: any) {
     const [state, setState] = useState(initialState);
 
     // проверка корректности введённых значений
-    const checkIsValuesCorrect = () => {
-        if (Number(state.startValue) >= Number(state.maxValue)) return false;
-        if (Number(state.startValue) < 0) return false;
-        if (Number(state.maxValue) < 1) return false;
-        if (Number(state.maxValue) === Number(state.startValue)) return false;
-        return true;
-    }
+    // const checkIsValuesCorrect = () => {
+    //     if (Number(state.startValue) >= Number(state.maxValue)) return false;
+    //     if (Number(state.startValue) < 0) return false;
+    //     if (Number(state.maxValue) < 1) return false;
+    //     if (Number(state.maxValue) === Number(state.startValue)) return false;
+    //     return true;
+    // }
 
     const onChangeMaxValue = (value: string) => {
         if (Number(value) <= Number(state.startValue)) {
-            console.log('AHTUNG');
+            console.log('SHANTUNG');
             setIsSetButtonDisabled(true)
-            setState({...state, maxValue: value, counterValue: ERROR_MESSAGE})
+            setState({...state, maxValue: value, counterValue: ERROR_MESSAGE, error: true})
         } else {
-            console.log('NE AHTUNG')
-            setState({...state, maxValue: value, counterValue: VALID_MESSAGE})
+            console.log('NE SHANTUNG')
+            setState({...state, maxValue: value, counterValue: VALID_MESSAGE, error: false})
             setIsSetButtonDisabled(false)
         }
     }
 
     const onChangeStartValue = (value: string) => {
         if (Number(value) >= Number(state.maxValue) || Number(value) < 0) {
-            console.log('AHTUNG');
+            console.log('SHANTUNG');
             setIsSetButtonDisabled(true)
-            setState({...state, startValue: value, counterValue: ERROR_MESSAGE})
+            setState({...state, startValue: value, counterValue: ERROR_MESSAGE, error: true})
         } else {
-            console.log('NE AHTUNG')
-            setState({...state, startValue: value, counterValue: VALID_MESSAGE})
+            console.log('NE SHANTUNG')
+            setState({...state, startValue: value, counterValue: VALID_MESSAGE, error: false})
             setIsSetButtonDisabled(false)
         }
     }
@@ -76,12 +76,12 @@ function App(this: any) {
         } else setIsMaximumCounterValueReached(false);
     }, [state.counterValue])
 
-    useEffect(() => {
-        // рабочая смена сообщений
-        // if (checkIsValuesCorrect()) {
-        //     setState({...state, counterValue: VALID_MESSAGE})
-        // } else setState({...state, counterValue: ERROR_MESSAGE})
-    }, [state.startValue, state.counterValue, state.error])
+    // useEffect(() => {
+    //     // рабочая смена сообщений
+    //     // if (checkIsValuesCorrect()) {
+    //     //     setState({...state, counterValue: VALID_MESSAGE})
+    //     // } else setState({...state, counterValue: ERROR_MESSAGE})
+    // }, [state.startValue, state.counterValue, state.error])
 
 
     return (
@@ -102,6 +102,7 @@ function App(this: any) {
                 {//isValueSet ?
                     <CounterValue value={state.counterValue}
                                   maximumReached={isMaximumCounterValueReached}
+                                  error={state.error}
                     />
 
                     // <CounterValue value={VALID_MESSAGE} maximumReached={isMaximumCounterValueReached}/>
