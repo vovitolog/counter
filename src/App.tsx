@@ -11,6 +11,8 @@ function App(this: any) {
     const VALID_MESSAGE = 'Enter values end press "set"';
 
     const [isSetButtonDisabled, setIsSetButtonDisabled] = useState<boolean>(false);
+    const [isIncButtonDisabled, setIsIncButtonDisabled] = useState<boolean>(false);
+    const [isResetButtonDisabled, setIsResetButtonDisabled] = useState<boolean>(false);
     const [isMaximumCounterValueReached, setIsMaximumCounterValueReached] = useState<boolean>(false);
 
     const initialState = {
@@ -32,18 +34,20 @@ function App(this: any) {
     // }
 
     const onChangeMaxValue = (value: string) => {
+        setIsIncButtonDisabled(true);
+        setIsResetButtonDisabled(true);
         if (Number(value) <= Number(state.startValue)) {
-            console.log('SHANTUNG');
             setIsSetButtonDisabled(true)
             setState({...state, maxValue: value, counterValue: ERROR_MESSAGE, error: true})
         } else {
-            console.log('NE SHANTUNG')
             setState({...state, maxValue: value, counterValue: VALID_MESSAGE, error: false})
             setIsSetButtonDisabled(false)
         }
     }
 
     const onChangeStartValue = (value: string) => {
+        setIsIncButtonDisabled(true);
+        setIsResetButtonDisabled(true);
         if (Number(value) >= Number(state.maxValue) || Number(value) < 0) {
             console.log('SHANTUNG');
             setIsSetButtonDisabled(true)
@@ -67,6 +71,8 @@ function App(this: any) {
         localStorage.setItem('startValue', state.startValue);
         localStorage.setItem('maxValue', state.maxValue);
         setIsSetButtonDisabled(true);
+        setIsIncButtonDisabled(false);
+        setIsResetButtonDisabled(false);
     }
 
     // Смена класса номера при вводе
@@ -110,8 +116,8 @@ function App(this: any) {
 
                 <div className={'button-wrapper'}>
                     <Button name={'inc'} handler={incHandler}
-                            disabled={Number(state.counterValue) === Number(state.maxValue)}></Button>
-                    <Button name={'reset'} handler={resetHandler} disabled={false}></Button>
+                            disabled={Number(state.counterValue) === Number(state.maxValue) || isIncButtonDisabled}></Button>
+                    <Button name={'reset'} handler={resetHandler} disabled={isResetButtonDisabled}></Button>
                 </div>
             </div>
         </div>
