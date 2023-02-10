@@ -1,20 +1,8 @@
-
-/*Сделать переменные!!!*/
-/*Сделать переменные!!!*/
-/*Сделать переменные!!!*/
-/*Сделать переменные!!!*/
-/*Сделать переменные!!!*/
-/*Сделать переменные!!!*/
-/*Сделать переменные!!!*/
-
-
-
 .App {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 100px;
-    /*margin: 0 auto;*/
     background-color: #22252D;
     height: 100vh;
 }
@@ -24,10 +12,8 @@
     display: flex;
     gap: 50px;
     border: 2px solid #11afdb;
-    /*border: 2px solid green;*/
     border-radius: 10px;
     justify-content: center;
-    /*background-color: #22252D;*/
 }
 
 .input-wrapper {
@@ -49,6 +35,5 @@
     border-radius: 10px;
     background-color: #22252D;
     border: 2px solid #11afdb;
-    border: 2px solid red;
     padding: 10px;
 }
