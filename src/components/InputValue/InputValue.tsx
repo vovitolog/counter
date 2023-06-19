@@ -3,7 +3,7 @@ import styles from "./InputValue.module.css"
 
 type InputPropsType = {
     description: string
-    currentValue: string
+    currentValue: string | number
     error: boolean
     onChangeValue: (value: string) => void
 }

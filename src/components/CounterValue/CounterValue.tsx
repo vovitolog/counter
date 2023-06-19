@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './CounterValue.module.css'
 
 type CounterValueTypeProps = {
-    value: string
+    value: string | number
     maximumReached: boolean
     error: boolean
 }
