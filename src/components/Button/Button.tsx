@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Button.module.css"
 
 type ButtonPropsType = {
-    name: string
+    name?: string
     disabled: boolean
     handler: () => void
 }
